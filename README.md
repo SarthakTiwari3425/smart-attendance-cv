@@ -299,7 +299,10 @@ project, and the reason the defaults are what they are:
 
 Denoising matters because LBP codes come from single-pixel comparisons, so sensor noise
 flips bits and corrupts the histogram. Artefacts from an evaluation run are written to
-`reports/`: `evaluation.json`, `confusion_matrix.csv` and `confusion_matrix.png`.
+`reports/<algorithm>/`: `evaluation.json`, `confusion_matrix.csv` and
+`confusion_matrix.png`. The results of the run quoted above are committed under
+`reports/lbph/`, `reports/eigen/` and `reports/fisher/` so they can be inspected without
+re-running anything.
 
 These numbers characterise the synthetic benchmark, not real-world classroom accuracy;
 expect lower figures on real faces, where pose and expression vary far more.
