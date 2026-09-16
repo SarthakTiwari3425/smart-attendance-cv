@@ -1,0 +1,38 @@
+sequenceDiagram
+    actor Teacher
+    participant CLI as cli.py
+    participant Src as VideoSource
+    participant Svc as AttendanceService
+    participant Det as FaceDetector
+    participant Pre as FacePreprocessor
+    participant Rec as FaceRecognizer
+    participant DB as AttendanceDatabase
+
+    Teacher->>CLI: python main.py recognize --source 0
+    CLI->>Rec: load(model_dir)
+    Rec-->>CLI: trained model + label map
+    CLI->>Src: open_source("0")
+    CLI->>Svc: run_session(source, session_id)
+    Svc->>DB: start_session()
+
+    loop for every frame
+        Src-->>Svc: frame
+        Svc->>Det: detect(frame)
+        Det-->>Svc: bounding boxes
+        Svc->>Pre: process(frame, box)
+        Pre-->>Svc: 200x200 normalised chip
+        Svc->>Rec: predict(chip)
+        Rec-->>Svc: (student_id, distance, accepted)
+        alt distance > threshold
+            Svc->>DB: log_recognition(REJECTED)
+        else confirmed N times
+            Svc->>DB: mark_attendance(session, student)
+            DB-->>Svc: inserted / already present
+        end
+    end
+
+    Svc->>DB: end_session()
+    Svc-->>CLI: SessionStats
+    CLI->>DB: session_attendance()
+    DB-->>CLI: rows
+    CLI-->>Teacher: report table + CSV

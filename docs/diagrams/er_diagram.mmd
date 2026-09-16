@@ -1,0 +1,37 @@
+erDiagram
+    STUDENTS ||--o{ ATTENDANCE : "is recorded in"
+    SESSIONS ||--o{ ATTENDANCE : "contains"
+    SESSIONS ||--o{ RECOGNITION_LOG : "produces"
+    STUDENTS ||--o{ RECOGNITION_LOG : "may be matched in"
+
+    STUDENTS {
+        TEXT student_id PK
+        TEXT name
+        TEXT email
+        INTEGER sample_count
+        TEXT enrolled_at
+    }
+    SESSIONS {
+        TEXT session_id PK
+        TEXT course_code
+        TEXT started_at
+        TEXT ended_at
+        TEXT source
+    }
+    ATTENDANCE {
+        INTEGER id PK
+        TEXT session_id FK
+        TEXT student_id FK
+        TEXT marked_at
+        REAL confidence
+        TEXT status
+    }
+    RECOGNITION_LOG {
+        INTEGER id PK
+        TEXT session_id FK
+        TEXT student_id FK
+        REAL distance
+        TEXT decision
+        INTEGER frame_index
+        TEXT logged_at
+    }

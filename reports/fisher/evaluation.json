@@ -1,0 +1,188 @@
+{
+  "algorithm": "fisher",
+  "threshold": 1401.06,
+  "n_train": 66,
+  "n_test": 24,
+  "n_classes": 6,
+  "accuracy": 0.9583333333333334,
+  "accuracy_with_threshold": 0.9166666666666666,
+  "false_reject_rate": 0.041666666666666664,
+  "mean_distance_correct": 506.44684751938405,
+  "mean_distance_wrong": 1624.1372010054768,
+  "per_class": [
+    {
+      "student_id": "S001",
+      "support": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "student_id": "S002",
+      "support": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "student_id": "S003",
+      "support": 4,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571
+    },
+    {
+      "student_id": "S004",
+      "support": 4,
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1": 0.8889
+    },
+    {
+      "student_id": "S005",
+      "support": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "student_id": "S006",
+      "support": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  ],
+  "confusion": [
+    [
+      4,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      3,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      4,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      4,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      4
+    ]
+  ],
+  "labels": [
+    "S001",
+    "S002",
+    "S003",
+    "S004",
+    "S005",
+    "S006"
+  ],
+  "threshold_sweep": [
+    {
+      "threshold": 132.42,
+      "accept_rate": 0.0417,
+      "accuracy": 0.0417,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 268.03,
+      "accept_rate": 0.2083,
+      "accuracy": 0.2083,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 403.64,
+      "accept_rate": 0.375,
+      "accuracy": 0.375,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 539.25,
+      "accept_rate": 0.625,
+      "accuracy": 0.625,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 674.86,
+      "accept_rate": 0.75,
+      "accuracy": 0.75,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 810.47,
+      "accept_rate": 0.8333,
+      "accuracy": 0.8333,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 946.08,
+      "accept_rate": 0.875,
+      "accuracy": 0.875,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 1081.69,
+      "accept_rate": 0.9167,
+      "accuracy": 0.9167,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 1217.3,
+      "accept_rate": 0.9167,
+      "accuracy": 0.9167,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 1352.92,
+      "accept_rate": 0.9167,
+      "accuracy": 0.9167,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 1488.53,
+      "accept_rate": 0.9583,
+      "accuracy": 0.9583,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 1624.14,
+      "accept_rate": 1.0,
+      "accuracy": 0.9583,
+      "false_accept_rate": 0.0417
+    }
+  ]
+}

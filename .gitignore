@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+
+# Enrolled face data — never commit real biometric data
+data/dataset/*
+!data/dataset/.gitkeep
+data/demo_frames/
+data/*.db
+
+# Trained models and per-session exports (regenerate with `python main.py demo`)
+models/*.yml
+models/*.json
+reports/attendance_*.csv
+logs/
+
+# Sample evaluation artefacts under reports/lbph, reports/eigen and reports/fisher
+# are committed deliberately as evidence of the measured results.
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

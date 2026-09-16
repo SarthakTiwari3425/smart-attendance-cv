@@ -1,0 +1,46 @@
+# Smart Attendance System - runtime configuration
+# Every value here can be overridden on the command line.
+
+log_level: INFO
+
+paths:
+  dataset_dir: data/dataset
+  database_path: data/attendance.db
+  model_dir: models
+  report_dir: reports
+  log_file: logs/attendance.log
+
+detection:
+  backend: haar               # haar | none  ("none" = images are already cropped faces)
+  cascade: haarcascade_frontalface_default.xml
+  eye_cascade: haarcascade_eye.xml
+  scale_factor: 1.1           # pyramid step; smaller = slower but finds more faces
+  min_neighbors: 5            # higher = fewer false positives
+  min_face_size: 60           # pixels; ignores distant/background faces
+  max_faces_per_frame: 10
+
+preprocess:
+  face_width: 200
+  face_height: 200
+  use_clahe: true             # contrast-limited adaptive histogram equalisation
+  clahe_clip_limit: 2.0
+  clahe_grid: 8
+  denoise_ksize: 5            # Gaussian kernel before LBP coding; 0 disables
+  align_eyes: true            # rotate so the eye line is horizontal
+  blur_rejection_threshold: 25.0
+
+recognition:
+  algorithm: lbph             # lbph | eigen | fisher
+  lbph_radius: 1
+  lbph_neighbors: 8
+  lbph_grid_x: 8
+  lbph_grid_y: 8
+  num_components: 0           # eigen/fisher only; 0 keeps all components
+  distance_threshold: 60.0    # overridden by auto-calibration during training
+  min_samples_per_student: 5
+
+attendance:
+  consecutive_hits_required: 2   # temporal voting before a student is marked
+  cooldown_seconds: 300
+  frame_stride: 1
+  late_after_minutes: 10

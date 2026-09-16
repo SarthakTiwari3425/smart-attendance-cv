@@ -1,0 +1,90 @@
+classDiagram
+    class AppConfig {
+        +PathConfig paths
+        +DetectionConfig detection
+        +PreprocessConfig preprocess
+        +RecognitionConfig recognition
+        +AttendanceConfig attendance
+        +load(path) AppConfig
+        +validate()
+    }
+
+    class FaceDetector {
+        <<interface>>
+        +detect(image) List~Box~
+    }
+    class HaarCascadeDetector {
+        -CascadeClassifier cascade
+        +detect(image) List~Box~
+    }
+    class PassthroughDetector {
+        +detect(image) List~Box~
+    }
+
+    class FacePreprocessor {
+        -PreprocessConfig config
+        +crop_chip(image, box) ndarray
+        +normalize(chip) ndarray
+        +process(image, box) ndarray
+        +is_blurry(chip) bool
+    }
+
+    class FaceRecognizer {
+        -model
+        -label_map
+        +train(DatasetSplit)
+        +predict(chip) Prediction
+        +save(dir)
+        +load(dir, config) FaceRecognizer
+    }
+    class Prediction {
+        +str student_id
+        +float distance
+        +bool accepted
+        +confidence() float
+    }
+
+    class DatasetManager {
+        +enroll_from_images(id, name, dir) int
+        +enroll_from_camera(id, name, src, n) int
+        +load(min_samples) DatasetSplit
+        +counts() dict
+    }
+    class DatasetSplit {
+        +List~ndarray~ images
+        +List~int~ labels
+        +dict label_map
+    }
+
+    class AttendanceService {
+        +process_frame(frame, session, idx, stats)
+        +run_session(source, session) SessionStats
+    }
+    class AttendanceDatabase {
+        +add_student(id, name)
+        +mark_attendance(session, student, conf) bool
+        +session_attendance(session) List~AttendanceRecord~
+        +absentees(session) List~Student~
+    }
+    class BaseSource {
+        <<interface>>
+        +frames() Iterator
+        +release()
+    }
+
+    FaceDetector <|.. HaarCascadeDetector
+    FaceDetector <|.. PassthroughDetector
+    BaseSource <|.. CameraSource
+    BaseSource <|.. VideoFileSource
+    BaseSource <|.. ImageFolderSource
+    AttendanceService --> FaceDetector
+    AttendanceService --> FacePreprocessor
+    AttendanceService --> FaceRecognizer
+    AttendanceService --> AttendanceDatabase
+    AttendanceService --> BaseSource
+    FaceRecognizer --> Prediction
+    FaceRecognizer --> DatasetSplit
+    DatasetManager --> DatasetSplit
+    DatasetManager --> FaceDetector
+    DatasetManager --> FacePreprocessor
+    AttendanceService --> AppConfig

@@ -1,0 +1,188 @@
+{
+  "algorithm": "lbph",
+  "threshold": 35.98,
+  "n_train": 66,
+  "n_test": 24,
+  "n_classes": 6,
+  "accuracy": 0.9583333333333334,
+  "accuracy_with_threshold": 0.9583333333333334,
+  "false_reject_rate": 0.0,
+  "mean_distance_correct": 29.87371386982515,
+  "mean_distance_wrong": 31.992029218516386,
+  "per_class": [
+    {
+      "student_id": "S001",
+      "support": 4,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571
+    },
+    {
+      "student_id": "S002",
+      "support": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "student_id": "S003",
+      "support": 4,
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1": 0.8889
+    },
+    {
+      "student_id": "S004",
+      "support": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "student_id": "S005",
+      "support": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "student_id": "S006",
+      "support": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  ],
+  "confusion": [
+    [
+      3,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      4,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      4,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      4
+    ]
+  ],
+  "labels": [
+    "S001",
+    "S002",
+    "S003",
+    "S004",
+    "S005",
+    "S006"
+  ],
+  "threshold_sweep": [
+    {
+      "threshold": 25.97,
+      "accept_rate": 0.0417,
+      "accuracy": 0.0417,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 26.69,
+      "accept_rate": 0.0833,
+      "accuracy": 0.0833,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 27.41,
+      "accept_rate": 0.125,
+      "accuracy": 0.125,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 28.13,
+      "accept_rate": 0.1667,
+      "accuracy": 0.1667,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 28.85,
+      "accept_rate": 0.25,
+      "accuracy": 0.25,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 29.57,
+      "accept_rate": 0.4167,
+      "accuracy": 0.4167,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 30.29,
+      "accept_rate": 0.625,
+      "accuracy": 0.625,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 31.01,
+      "accept_rate": 0.6667,
+      "accuracy": 0.6667,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 31.73,
+      "accept_rate": 0.7917,
+      "accuracy": 0.7917,
+      "false_accept_rate": 0.0
+    },
+    {
+      "threshold": 32.45,
+      "accept_rate": 0.875,
+      "accuracy": 0.8333,
+      "false_accept_rate": 0.0417
+    },
+    {
+      "threshold": 33.17,
+      "accept_rate": 0.9167,
+      "accuracy": 0.875,
+      "false_accept_rate": 0.0417
+    },
+    {
+      "threshold": 33.89,
+      "accept_rate": 1.0,
+      "accuracy": 0.9583,
+      "false_accept_rate": 0.0417
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+flowchart TD
+    A([Start session]) --> B["Load trained model<br/>+ label map"]
+    B --> C{"Model found?"}
+    C -- No --> C1["Error: run 'train' first"] --> Z([Exit])
+    C -- Yes --> D["Open frame source<br/>camera / video / folder"]
+    D --> E["Read next frame"]
+    E --> F{"Frame available?"}
+    F -- No --> Y["Close session<br/>print report + CSV"] --> Z
+    F -- Yes --> G["Detect faces<br/>Haar cascade"]
+    G --> H{"Face found?"}
+    H -- No --> E
+    H -- Yes --> I["Pre-process crop<br/>align, denoise, CLAHE, resize"]
+    I --> J["Predict label + distance<br/>LBPH"]
+    J --> K{"distance &lt;= threshold?"}
+    K -- No --> L["Log REJECTED<br/>display 'Unknown'"] --> E
+    K -- Yes --> M{"Already marked<br/>this session?"}
+    M -- Yes --> E
+    M -- No --> N["Increment confirmation count"]
+    N --> O{"hits &gt;= required?"}
+    O -- No --> E
+    O -- Yes --> P["Insert attendance row<br/>PRESENT or LATE"] --> E

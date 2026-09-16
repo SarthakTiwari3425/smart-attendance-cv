@@ -1,0 +1,27 @@
+flowchart LR
+    ADMIN(["Teacher / Admin"])
+    STUDENT(["Student"])
+    EVAL(["Evaluator"])
+
+    subgraph System["Smart Attendance System"]
+        UC1(["Enrol student faces"])
+        UC2(["Train recognition model"])
+        UC3(["Run attendance session"])
+        UC4(["View / export attendance report"])
+        UC5(["Evaluate model accuracy"])
+        UC6(["Manage students"])
+        UC7(["Calibrate rejection threshold"])
+        UC8(["Appear before the camera"])
+    end
+
+    ADMIN --> UC1
+    ADMIN --> UC2
+    ADMIN --> UC3
+    ADMIN --> UC4
+    ADMIN --> UC6
+    EVAL --> UC5
+    EVAL --> UC4
+    STUDENT --> UC8
+    UC8 -.->|"is recognised by"| UC3
+    UC2 -.->|"includes"| UC7
+    UC3 -.->|"includes"| UC4

@@ -1,0 +1,45 @@
+flowchart TB
+    subgraph Input["Input Layer"]
+        CAM["Webcam<br/>CameraSource"]
+        VID["Video file<br/>VideoFileSource"]
+        IMG["Image folder<br/>ImageFolderSource"]
+    end
+
+    subgraph CLI["Presentation Layer"]
+        MAIN["main.py / cli.py<br/>argparse sub-commands"]
+        REP["reporting.py<br/>console tables + CSV"]
+    end
+
+    subgraph Vision["Computer Vision Layer"]
+        DET["detector.py<br/>Haar cascade / passthrough"]
+        PRE["preprocessing.py<br/>gray, align, denoise, CLAHE, resize"]
+        REC["recognizer.py<br/>LBPH / Eigenfaces / Fisherfaces"]
+    end
+
+    subgraph Domain["Application Layer"]
+        SVC["attendance_service.py<br/>temporal voting, marking rules"]
+        DS["dataset.py<br/>enrolment + splits"]
+        EVAL["evaluation.py<br/>metrics, calibration"]
+    end
+
+    subgraph Storage["Persistence Layer"]
+        DB[("SQLite<br/>attendance.db")]
+        MODEL[["face_model.yml<br/>labels.json"]]
+        FILES[["data/dataset/<br/>face chips"]]
+        LOGS[["logs/attendance.log"]]
+    end
+
+    CAM --> MAIN
+    VID --> MAIN
+    IMG --> MAIN
+    MAIN --> SVC
+    MAIN --> DS
+    MAIN --> EVAL
+    SVC --> DET --> PRE --> REC
+    DS --> DET
+    DS --> FILES
+    REC --> MODEL
+    SVC --> DB
+    EVAL --> REC
+    MAIN --> REP --> DB
+    SVC --> LOGS

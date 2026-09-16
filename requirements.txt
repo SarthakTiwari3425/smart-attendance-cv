@@ -1,0 +1,10 @@
+# Core (required)
+opencv-contrib-python>=4.5,<5      # Haar cascades + cv2.face recognisers (LBPH/Eigen/Fisher)
+numpy>=1.21
+
+# Optional but recommended
+matplotlib>=3.4                   # confusion-matrix heat-map in `evaluate`
+PyYAML>=5.4                       # config.yaml parsing (a built-in fallback parser is used if absent)
+
+# Development
+pytest>=7.0
