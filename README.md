@@ -107,7 +107,7 @@ Python 3.8 or newer and no camera.
 
 ```bash
 # 1. Get the code
-git clone https://github.com/<your-username>/smart-attendance-cv.git
+git clone https://github.com/SarthakTiwari3425/smart-attendance-cv.git
 cd smart-attendance-cv
 
 # 2. Create and activate a virtual environment
